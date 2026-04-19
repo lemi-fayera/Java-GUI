@@ -2,56 +2,76 @@ package system;
 
 import model.*;
 import java.util.ArrayList;
-import java.util.List;
 
-/**
- * The Controller: Manages data lists and core business logic.
- * This acts as our temporary "Database".
- */
 public class HotelSystem {
-    private List<Room> rooms;
-    private List<Customer> customers;
-    private List<Reservation> reservations;
+
+    private ArrayList<Room> rooms;
+    private ArrayList<Customer> customers;
+    private ArrayList<Reservation> reservations;
 
     public HotelSystem() {
         rooms = new ArrayList<>();
         customers = new ArrayList<>();
         reservations = new ArrayList<>();
-        seedData(); // Add some initial data
+
+        seedData();
     }
 
     private void seedData() {
-        rooms.add(new Room("101", "Single", 50.0));
-        rooms.add(new Room("102", "Double", 85.0));
-        rooms.add(new Room("201", "Suite", 150.0));
-        customers.add(new Customer("John Doe", "555-0101", "john@example.com", "ID123"));
+        rooms.add(new Room("101", "Single", 50));
+        rooms.add(new Room("102", "Double", 80));
+        rooms.add(new Room("201", "Suite", 150));
+
+        customers.add(new Customer("John Doe", "555", "john@mail.com", "ID1"));
     }
 
-    // Business Methods
-    public void addRoom(Room r) { rooms.add(r); }
-    public void removeRoom(String roomNum) {
-        rooms.removeIf(r -> r.getRoomNumber().equals(roomNum));
+    public void addRoom(Room r) {
+        rooms.add(r);
     }
-    public void addCustomer(Customer c) { customers.add(c); }
-    
+
+    public void removeRoom(String roomNum) {
+        for (int i = 0; i < rooms.size(); i++) {
+            if (rooms.get(i).getRoomNumber().equals(roomNum)) {
+                rooms.remove(i);
+                break;
+            }
+        }
+    }
+
+    public void addCustomer(Customer c) {
+        customers.add(c);
+    }
+
     public void createReservation(Customer c, Room r, int nights) {
         Reservation res = new Reservation(c, r, nights);
         reservations.add(res);
-        r.setAvailable(false); // Mark as booked
+        r.setAvailable(false);
     }
 
     public void checkout(String roomNum) {
         for (Room r : rooms) {
             if (r.getRoomNumber().equals(roomNum)) {
                 r.setAvailable(true);
-                reservations.removeIf(res -> res.getRoom().getRoomNumber().equals(roomNum));
+            }
+        }
+
+        for (int i = 0; i < reservations.size(); i++) {
+            if (reservations.get(i).getRoom().getRoomNumber().equals(roomNum)) {
+                reservations.remove(i);
                 break;
             }
         }
     }
 
-    // Getters for UI
-    public List<Room> getAllRooms() { return rooms; }
-    public List<Customer> getAllCustomers() { return customers; }
-    public List<Reservation> getAllReservations() { return reservations; }
+    public ArrayList<Room> getAllRooms() {
+        return rooms;
+    }
+
+    public ArrayList<Customer> getAllCustomers() {
+        return customers;
+    }
+
+    public ArrayList<Reservation> getAllReservations() {
+        return reservations;
+    }
 }
