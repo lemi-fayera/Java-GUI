@@ -1,18 +1,27 @@
-## Getting Started
+# 🖥️ Java GUI Application
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+A simple Java Desktop Application built using **Swing GUI**.  
+This project demonstrates basic GUI design, event handling, and user interaction in Java.
 
-## Folder Structure
+---
 
-The workspace contains two folders by default, where:
+## 🚀 Features
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- User-friendly graphical interface (Swing)
+- Login form with validation
+- Button click event handling
+- Input fields (TextField, PasswordField)
+- Message dialogs for feedback (success/error)
+- Clean and simple UI structure
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+---
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## 🛠️ Technologies Used
 
-## Dependency Management
+- Java (JDK 8+)
+- Java Swing (GUI Library)
+- AWT (for basic components & events)
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+---
+
+## 📁 Project Structure
