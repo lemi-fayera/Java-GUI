@@ -1,14 +1,16 @@
 package model;
 
 public class Customer {
+    private final String fullName;
+    private final String phone;
+    private final String email;
+    private final String idNumber;
 
-    private String fullName;
-    private String phone;
-    private String email;
-    private String idNumber;
-
-    // Constructor
     public Customer(String fullName, String phone, String email, String idNumber) {
+        if (fullName == null || idNumber == null) {
+            throw new IllegalArgumentException("Name and ID cannot be null");
+        }
+
         this.fullName = fullName;
         this.phone = phone;
         this.email = email;
@@ -16,40 +18,12 @@ public class Customer {
     }
 
     // Getters
-    public String getFullName() {
-        return fullName;
-    }
+    public String getFullName() { return fullName; }
+    public String getPhone() { return phone; }
+    public String getEmail() { return email; }
+    public String getIdNumber() { return idNumber; }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getIdNumber() {
-        return idNumber;
-    }
-
-    // Setters (important for beginner level)
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setIdNumber(String idNumber) {
-        this.idNumber = idNumber;
-    }
-
-    // Display info
+    @Override
     public String toString() {
         return fullName + " (ID: " + idNumber + ")";
     }

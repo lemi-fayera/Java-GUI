@@ -1,13 +1,14 @@
 package model;
 
+/**
+ * Represents a hotel room.
+ */
 public class Room {
-
     private String roomNumber;
     private String type; // Single, Double, Suite
     private double pricePerNight;
     private boolean isAvailable;
 
-    // Constructor
     public Room(String roomNumber, String type, double pricePerNight) {
         this.roomNumber = roomNumber;
         this.type = type;
@@ -15,42 +16,15 @@ public class Room {
         this.isAvailable = true;
     }
 
-    // Getters
-    public String getRoomNumber() {
-        return roomNumber;
-    }
+    // Getters and Setters
+    public String getRoomNumber() { return roomNumber; }
+    public String getType() { return type; }
+    public double getPricePerNight() { return pricePerNight; }
+    public boolean isAvailable() { return isAvailable; }
+    public void setAvailable(boolean available) { isAvailable = available; }
 
-    public String getType() {
-        return type;
-    }
-
-    public double getPricePerNight() {
-        return pricePerNight;
-    }
-
-    public boolean isAvailable() {
-        return isAvailable;
-    }
-
-    // Setters (added for learning purposes)
-    public void setRoomNumber(String roomNumber) {
-        this.roomNumber = roomNumber;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public void setPricePerNight(double pricePerNight) {
-        this.pricePerNight = pricePerNight;
-    }
-
-    public void setAvailable(boolean isAvailable) {
-        this.isAvailable = isAvailable;
-    }
-
-    // Display info
+    @Override
     public String toString() {
-        return "Room " + roomNumber + " - " + type + " - " + pricePerNight;
+        return "Room " + roomNumber + " [" + type + "] - $" + pricePerNight + "/night";
     }
 }
