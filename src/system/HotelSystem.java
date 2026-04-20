@@ -29,15 +29,6 @@ public class HotelSystem {
         rooms.add(r);
     }
 
-    public void removeRoom(String roomNum) {
-        for (int i = 0; i < rooms.size(); i++) {
-            if (rooms.get(i).getRoomNumber().equals(roomNum)) {
-                rooms.remove(i);
-                break;
-            }
-        }
-    }
-
     public void addCustomer(Customer c) {
         customers.add(c);
     }

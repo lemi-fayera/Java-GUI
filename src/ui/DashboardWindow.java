@@ -12,8 +12,8 @@ public class DashboardWindow extends JFrame {
     public DashboardWindow(HotelSystem system) {
         this.system = system;
 
-        setTitle("LuxeStay | Management Suite");
-        setSize(1000, 650); // Slightly wider for better proportions
+        setTitle("ASTU Hotel Reservation Management System | by CSE section 2 Student");
+        setSize(1000, 650);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
@@ -24,7 +24,7 @@ public class DashboardWindow extends JFrame {
         header.setPreferredSize(new Dimension(getWidth(), 70));
         header.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(220, 220, 220)));
 
-        JLabel logo = new JLabel("  LUXESTAY");
+        JLabel logo = new JLabel("  ASTU Hotel Reservation Management System");
         logo.setFont(new Font("Segoe UI", Font.BOLD, 24));
         logo.setForeground(new Color(44, 62, 80));
         
@@ -35,6 +35,13 @@ public class DashboardWindow extends JFrame {
         header.add(logo, BorderLayout.WEST);
         header.add(userRole, BorderLayout.EAST);
 
+        JLabel adminName = new JLabel("Submitted to: Mr. Ketema A. ");
+        adminName.setFont(new Font("Segoe UI", Font.ITALIC, 12));
+        adminName.setForeground(Color.GRAY);
+
+        header.add(logo, BorderLayout.WEST);
+        header.add(adminName, BorderLayout.EAST);
+
         // ===== 2. SIDEBAR =====
         JPanel sidebar = new JPanel();
         sidebar.setBackground(new Color(44, 62, 80)); // Slightly lighter navy than pure black
@@ -42,12 +49,11 @@ public class DashboardWindow extends JFrame {
         sidebar.setBorder(BorderFactory.createEmptyBorder(20, 15, 20, 15));
         sidebar.setPreferredSize(new Dimension(230, getHeight()));
 
-        // Buttons with specific background colors
-        JButton btnReg = createStyledButton("Register Guest", new Color(52, 73, 94));
-        JButton btnRoom = createStyledButton("Manage Rooms", new Color(52, 73, 94));
-        JButton btnBook = createStyledButton("New Booking", new Color(41, 128, 185)); // Standout color
-        JButton btnOut = createStyledButton("Check-out", new Color(52, 73, 94));
-        JButton btnRefresh = createStyledButton("Refresh Stats", new Color(39, 174, 96)); // Green for refresh
+JButton btnReg = createStyledButton("Register Guest", new Color(155, 89, 182));   // Purple
+JButton btnRoom = createStyledButton("Manage Rooms", new Color(52, 152, 219));     // Blue
+JButton btnBook = createStyledButton("New Booking", new Color(46, 204, 113));      // Bright Green (primary action)
+JButton btnOut = createStyledButton("Check-out", new Color(231, 76, 60));          // Red (warning/action)
+JButton btnRefresh = createStyledButton("Refresh Stats", new Color(241, 196, 15)); // Yellow (refresh/utility)
 
         sidebar.add(btnReg);
         sidebar.add(btnRoom);
@@ -90,7 +96,7 @@ public class DashboardWindow extends JFrame {
         updateStats();
     }
 
-    // ===== ENHANCED BUTTON STYLE =====
+
     private JButton createStyledButton(String text, Color bgColor) {
         JButton btn = new JButton(text);
         btn.setFont(new Font("Segoe UI", Font.BOLD, 13));
@@ -104,7 +110,7 @@ public class DashboardWindow extends JFrame {
         btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
         // Rounded-look padding
-        btn.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        btn.setBorder(BorderFactory.createEmptyBorder(20, 10, 10, 10));
 
         // Hover effect based on the original background color
         btn.addMouseListener(new java.awt.event.MouseAdapter() {

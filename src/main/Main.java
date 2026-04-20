@@ -2,26 +2,22 @@ package main;
 
 import system.HotelSystem;
 import ui.DashboardWindow;
-import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 public class Main {
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        // Create system (you can keep it for now)
-        HotelSystem system = new HotelSystem();
-
-        // Create main frame
-        JFrame frame = new JFrame("Hotel Reservation System");
-
-        // Set size and close operation
-        frame.setSize(800, 500);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // Add dashboard panel
-        DashboardWindow dashboard = new DashboardWindow(system);
-        frame.add(dashboard);
-
-        // Show window
-        frame.setVisible(true);
+        // Initialize the logic and the UI
+        SwingUtilities.invokeLater(() -> {
+            HotelSystem system = new HotelSystem();
+            DashboardWindow dashboard = new DashboardWindow(system);
+            dashboard.setVisible(true);
+        });
     }
 }
